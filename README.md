@@ -149,7 +149,11 @@ The `build` command chains to the underlying Docker daemon to build the Operator
 cd $OPERATOR_PATH/$OPERATOR_NAME
 operator-sdk build <docker registry url>/operator:v0.0.1
 ```
-Then push the image to your docker registry.
+Then push the image to your docker registry (here use docker command).
+```bash
+## you may need to docker login
+docker push <docker registry url>/operator:v0.0.1
+```
 
 Repleace placeholder in `$OPERATOR_PATH/$OPERATOR_NAME/deploy/operator.yaml`:
 ```bash
