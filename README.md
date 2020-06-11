@@ -112,7 +112,7 @@ Also notice that the `role.yaml` file under `$OPERATOR_PATH/$OPERATOR_NAME/deplo
 - As a Deployment inside a Kubernetes cluster: for production
 
 
-1. As Go program outside a cluster
+### As Go program outside a cluster
 ```bash
 cd $OPERATOR_PATH/$OPERATOR_NAME
 ## deploy CRD
@@ -139,7 +139,7 @@ kubectl get pods -n default
 Using `Crtl-c` to terminate the operator process.
 
 
-2. As a Deployment inside a Kubernetes cluster
+### As a Deployment inside a Kubernetes cluster
 
 The `build` command chains to the underlying Docker daemon to build the Operator image:
 ```bash
