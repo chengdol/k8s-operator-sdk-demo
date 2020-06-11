@@ -175,3 +175,12 @@ Watching the application pods spin up and running:
 kubectl get pods -n default
 ```
 
+## Other Resources
+Since Go-based Operators make heavy use of the Go Kubernetes libraries, it may be useful to review:
+- https://pkg.go.dev/k8s.io/api
+The `core/v1` and `apps/v1` modules are frequently used to interact with the common Kubernetes resources.
+
+More information on K8s controller:
+- https://kubernetes.io/docs/concepts/architecture/controller/
+
+
