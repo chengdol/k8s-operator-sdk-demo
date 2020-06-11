@@ -1,6 +1,9 @@
 # k8s-operator-sdk-demo
 
-The codebase is modified from <<[Kubernetes Operator](https://www.amazon.com/Kubernetes-Operators-Automating-Container-Orchestration/dp/1492048046/ref=sr_1_1?crid=100BTNK8YSUT8&dchild=1&keywords=kubernetes+operators&qid=1591893369&sprefix=kubernetes+oper%2Caps%2C206&sr=8-1)>>
+Inspired by <<[Kubernetes Operator](https://www.amazon.com/Kubernetes-Operators-Automating-Container-Orchestration/dp/1492048046/ref=sr_1_1?crid=100BTNK8YSUT8&dchild=1&keywords=kubernetes+operators&qid=1591893369&sprefix=kubernetes+oper%2Caps%2C206&sr=8-1)>>
+
+The codebase is modified from: 
+https://github.com/chengdol/chapters/tree/master/ch07/visitors-operator 
 
 ## Environment
 - Operating System: Red Hat Enterprise Linux Server release 7.7 (Maipo)
