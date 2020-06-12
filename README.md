@@ -175,12 +175,12 @@ kubectl create -f deploy/operator.yaml
 ## create application
 kubectl apply -f deploy/crds/*_cr.yaml
 ```
-> Notices that is the docker registry is secured, you need to patch the credential to the operator service account, for example, the secret name is `docker-registry-creds`:
-  ```bash
-  kubectl patch serviceaccount visitors-operator \
-        -p '{"imagePullSecrets": [{"name": "docker-registry-creds"}]}' \
-        -n default
-  ```
+Notice that if the docker registry is secured, you need to patch the credential to the operator service account, for example, the secret name is `docker-registry-creds`:
+```bash
+kubectl patch serviceaccount visitors-operator \
+      -p '{"imagePullSecrets": [{"name": "docker-registry-creds"}]}' \
+      -n default
+```
 
 Watching the application pods spin up and running:
 ```bash
