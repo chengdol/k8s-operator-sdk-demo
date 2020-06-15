@@ -36,8 +36,8 @@ curl -OJL https://github.com/operator-framework/operator-sdk/releases/download/$
 
 ## Install binary to your PATH 
 chmod +x operator-sdk-${RELEASE_VERSION}-x86_64-linux-gnu
-sudo cp operator-sdk-${RELEASE_VERSION}-x86_64-linux-gnu /usr/local/bin/operator-sdk
-rm operator-sdk-${RELEASE_VERSION}-x86_64-linux-gnu
+/bin/cp operator-sdk-${RELEASE_VERSION}-x86_64-linux-gnu /usr/local/bin/operator-sdk
+/bin/rm operator-sdk-${RELEASE_VERSION}-x86_64-linux-gnu
 
 ## Verify installed correctly
 operator-sdk version
