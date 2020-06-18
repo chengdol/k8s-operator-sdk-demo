@@ -23,6 +23,10 @@ git clone https://github.com/chengdol/k8s-operator-sdk-demo.git ~/k8s-operator-s
 2. Install Go language
 
 Download and install from: https://golang.org/dl/
+```bash
+## Check go installed correctly
+go version
+```
 
 3. Install operator-sdk
 
@@ -45,8 +49,6 @@ operator-sdk version
 
 4. Create Go-based operator
 
-> You must run all operator-sdk commands at root project directory $OPERATOR_PATH
-
 Generate operator skeleton:
 ```bash
 ## set up GOPATH
@@ -59,14 +61,17 @@ export PATH=$PATH:$GOPATH/bin
 OPERATOR_NAME=visitors-operator
 OPERATOR_PATH=$GOPATH/src/demo
 mkdir -p $OPERATOR_PATH
+
 cd $OPERATOR_PATH
 operator-sdk new $OPERATOR_NAME
 ```
 
+You must run all operator-sdk commands at root project directory `$OPERATOR_PATH`.
 Generate CRDs skeleton:
 ```bash
 cd $OPERATOR_PATH/$OPERATOR_NAME
 operator-sdk add api --api-version=example.com/v1 --kind=VisitorsApp
+
 ## from command outputs, you will see what files are generated
 ```
 
@@ -160,7 +165,7 @@ Repleace placeholder in `$OPERATOR_PATH/$OPERATOR_NAME/deploy/operator.yaml`:
 sed -i 's|REPLACE_IMAGE|<docker registry url>/operator:v0.0.1|g' deploy/operator.yaml
 ```
 
-Setup RBAC and deploy the application
+Setup RBAC and operator service account:
 ```bash
 ## create CRD
 kubectl apply -f deploy/crds/*_crd.yaml
@@ -169,17 +174,22 @@ kubectl apply -f deploy/crds/*_crd.yaml
 kubectl create -f deploy/role.yaml
 kubectl create -f deploy/role_binding.yaml
 kubectl create -f deploy/service_account.yaml
-## create operator
-kubectl create -f deploy/operator.yaml
-
-## create application
-kubectl apply -f deploy/crds/*_cr.yaml
 ```
+
 Notice that if the docker registry is secured, you need to patch the credential to the operator service account, for example, the secret name is `docker-registry-creds`:
 ```bash
 kubectl patch serviceaccount visitors-operator \
       -p '{"imagePullSecrets": [{"name": "docker-registry-creds"}]}' \
       -n default
+```
+
+Create operator deployment:
+```bash
+## create operator
+kubectl create -f deploy/operator.yaml
+
+## create application
+kubectl apply -f deploy/crds/*_cr.yaml
 ```
 
 Watching the application pods spin up and running:
